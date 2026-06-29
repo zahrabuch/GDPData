@@ -15,3 +15,13 @@ df = kagglehub.load_dataset(
 )
 
 print("First 5 records:", df.head())
+print(df.describe())
+
+
+names = ["name", "region", "capital", "currency", "iso2"]
+
+df = df.drop(columns=names)
+corrmat = df.corr()
+fig = plt.figure(figsize=(12, 9))
+sns.heatmap(corrmat, vmax=.8, square=True)
+plt.show()
